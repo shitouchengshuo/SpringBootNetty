@@ -1,17 +1,16 @@
-package com.qiqi.config;
+package com.qiqi.config.thread;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * 读取日志打印需要的参数，这个线程池只是为了尽量减少日志打印对主线程造成的影响
- *
+ * 这个线程池主要是为了对业务中可能造成的阻塞进行分担，减少对主线程造成的阻塞
  */
-// @Data
-// @Configuration
-// @ConfigurationProperties(prefix = "thread.pool.log")
-public class LogThreadPoolConfig {
+@Data
+@Configuration
+@ConfigurationProperties("thread.pool.chief")
+public class ChiefThreadPoolConfig {
 
     private Integer queueSize;
 

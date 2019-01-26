@@ -1,8 +1,11 @@
 package com.qiqi.handler.impl;
 
 import com.qiqi.handler.MessageHandler;
+import com.qiqi.log.Printer;
 import com.qiqi.model.entity.MsgEntity;
 import com.qiqi.utils.MacUtil;
+
+import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Arrays;
@@ -13,6 +16,8 @@ import java.util.Date;
  */
 public abstract class AbstractMessageHandler implements MessageHandler {
 
+    @Resource(name = "printer")
+    Printer printer;
     /**
      * 设置productNumber、clientMac
      * @param message 原始信息

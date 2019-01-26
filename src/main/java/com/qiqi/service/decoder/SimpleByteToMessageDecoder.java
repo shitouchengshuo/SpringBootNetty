@@ -30,7 +30,6 @@ public class SimpleByteToMessageDecoder extends ByteToMessageDecoder {
         }
         //将当前的readerIndex备份到markedReaderIndex中
         byteBuf.markReaderIndex();
-
         byte[] heads = new byte[4];
         //将当前ByteBuf中的数据读取到byte数组heads中,从当前ByteBuf readerIndex开始读取，
         // 读取长度为heads.length，从byte数组dst索引0处开始写入数据。读取完成后，当前ByteBuf的readerIndex+=length

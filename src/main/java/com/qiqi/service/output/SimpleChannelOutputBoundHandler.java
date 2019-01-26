@@ -1,12 +1,14 @@
 package com.qiqi.service.output;
 
 import com.qiqi.model.entity.MsgEntity;
-import com.qiqi.utils.CRC16Util;
-import com.qiqi.utils.PrintUtil;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelOutboundHandlerAdapter;
 import io.netty.channel.ChannelPromise;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.Arrays;
 
 import static com.qiqi.constant.InstructionConst.SOCKET_CLOSE_RESPONSE;
 import static com.qiqi.constant.BaseConst.START_BYTE;
@@ -20,6 +22,7 @@ import static com.qiqi.constant.BaseConst.RESERVED_DATA;
 public class SimpleChannelOutputBoundHandler extends ChannelOutboundHandlerAdapter{
 
     private short instruction;
+    private static final Logger logger = LoggerFactory.getLogger(SimpleChannelOutputBoundHandler.class);
 
     /**
      * 将响应返回给客户端
@@ -41,8 +44,7 @@ public class SimpleChannelOutputBoundHandler extends ChannelOutboundHandlerAdapt
         setBaseResponse(result, msgEntity);
         System.arraycopy(msgEntity.getMsgBody(), 0, result, 24, bodySize);
         //测试用：打印数据到控制台
-        System.out.println("++++++++++++server发送数据+++++++++++++");
-        PrintUtil.printMsg(result);
+        logger.info("server发送数据:{}",Arrays.toString(result));
         ctx.write(Unpooled.copiedBuffer(result), promise);
     }
 

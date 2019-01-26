@@ -1,6 +1,6 @@
 package com.qiqi.service;
 
-import com.qiqi.config.NettyThreadPoolConfig;
+import com.qiqi.config.thread.NettyThreadPoolConfig;
 import com.qiqi.service.decoder.SimpleByteToMessageDecoder;
 import com.qiqi.service.input.SimpleChannelInputBoundHandler;
 import com.qiqi.service.output.SimpleChannelOutputBoundHandler;
@@ -11,8 +11,6 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.codec.string.StringDecoder;
-import io.netty.util.CharsetUtil;
 import io.netty.util.ResourceLeakDetector;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

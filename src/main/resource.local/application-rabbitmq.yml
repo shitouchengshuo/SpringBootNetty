@@ -1,0 +1,16 @@
+spring:
+  rabbitmq:
+    host: 114.141.173.17
+    port: 8920
+    username: rabbitmq
+    password: 123456
+    template:
+      exchange: balance-route-dev
+      routing-key: balance_dev_measure_raw_queue
+      retry:
+        enabled: true
+        max-attempts: 5
+    connection-timeout: 60s
+    listener:
+      direct:
+        acknowledge-mode: none

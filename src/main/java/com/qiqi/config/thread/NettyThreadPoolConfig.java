@@ -1,4 +1,4 @@
-package com.qiqi.config;
+package com.qiqi.config.thread;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
