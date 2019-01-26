@@ -1,0 +1,29 @@
+spring:
+  profiles:
+    # 加载不同模块
+    include: databases,redis,mongo,thread
+
+  jackson:
+    time-zone: GMT+8
+
+  datasource:
+    tomcat:
+      max-wait: 10000
+      max-active: 100
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+    hibernate:
+      ddl-auto: none
+
+# 配置日志
+logging:
+  config: classpath:logback.xml
+
+# 配置tomcat
+server:
+  tomcat:
+    max-threads: 2000
+    max-connections: 2000
+    min-spare-threads: 100
+  port: 9090

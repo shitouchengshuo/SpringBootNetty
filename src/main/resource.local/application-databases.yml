@@ -1,0 +1,23 @@
+# druid 配置
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=GMT
+      min-idle: 1
+      filters: stat
+      max-active: 10
+      max-wait: 60000
+      initial-size: 1
+      username: root
+      password: root
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      validation-query: SELECT 'x'
+      pool-prepared-statements: true
+      min-evictable-idle-time-millis: 60000
+      time-between-eviction-runs-millis: 60000
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      max-pool-prepared-statement-per-connection-size: 20
+
