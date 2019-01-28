@@ -4,13 +4,4 @@ spring:
     port: 5672
     username: guest
     password: guest
-    template:
-      exchange: spring_boot_netty_test_exchange
-      routing-key: mq_test_key
-      retry:
-        enabled: true
-        max-attempts: 5
     connection-timeout: 60s
-    listener:
-      direct:
-        acknowledge-mode: none

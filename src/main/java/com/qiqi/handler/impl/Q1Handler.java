@@ -70,6 +70,18 @@ public class Q1Handler extends AbstractMessageHandler implements WeightHandler {
         System.arraycopy(msgEntity.getProductNum(), 0, data, 0, 4);
         System.arraycopy(msgEntity.getClientMac(), 0, data, 4, 6);
         data[10] = message[14];
-        rabbitMqOperator.push("qiqi_queue",data);
+        rabbitMqOperator.push("first_queue" ,data);
+
+        //测试rabbitMq Direct Exchange模式
+        // for (int i = 0; i < 100; i++){
+        //     rabbitMqOperator.pushInt("second_queue",i);
+        // }
+
+        //测试Fanout Exchange模式
+        for (int i = 0; i < 100; i++){
+            //这里使用了两个队列绑定到Fanout交换机上面，发送端的routing_key写任何字符都会被忽略
+            //监听两个队列的Consumer均会收到相同的一份消息
+        rabbitMqOperator.pushIntFanout("fanoutExchange","",i);
+        }
     }
 }
