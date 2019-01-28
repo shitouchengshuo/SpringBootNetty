@@ -58,7 +58,7 @@ public class CustomerExecutors {
     /**
      * 定时任务线程池(rabitMq使用)，策略不能是抛弃,让调用者所在线程来运行任务
      */
-    @Bean("customThreadPoolExecutor")
+    @Bean(name ="customThreadPoolExecutor")
     public Executor chiefThreadPoolExecutor() {
         return new ThreadPoolExecutor(chiefThreadPoolConfig.getCorePoolSize(), chiefThreadPoolConfig.getMaximumPoolSize(),
                 chiefThreadPoolConfig.getKeepAliveTime(), TimeUnit.SECONDS,

@@ -1,7 +1,8 @@
 package com.qiqi.mq;
 
-import org.springframework.amqp.core.AmqpTemplate;
+import org.springframework.amqp.core.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
@@ -19,11 +20,21 @@ public class RabbitMqOperator {
     }
 
     /**
-     * 发送消息到rabbitmq
+     * 异步发送消息到rabbitmq
      * @param data
      */
     @Async(value = "customThreadPoolExecutor")
-    public void push(byte[] data){
-        amqpTemplate.convertAndSend(data);
+    public void push(String queue, byte[] data){
+        amqpTemplate.convertAndSend(queue, data);
+    }
+
+    /**
+     * 定义一个名为：qiqi_queue 的队列
+     * @return
+     */
+    @Bean
+    public Queue queueQueue() {
+        return new Queue("qiqi_queue");
+
     }
 }

@@ -66,10 +66,10 @@ public class Q1Handler extends AbstractMessageHandler implements WeightHandler {
         //byte[]message  0~3: head; 4~7:productNumber;  8~13:clientMac; 14:weight
         //byte[]data  0~3:productNumber; 4~9:clientMac;  10:weight
 
-        byte[] data = new byte[12];
+        byte[] data = new byte[11];
         System.arraycopy(msgEntity.getProductNum(), 0, data, 0, 4);
         System.arraycopy(msgEntity.getClientMac(), 0, data, 4, 6);
         data[10] = message[14];
-        rabbitMqOperator.push(data);
+        rabbitMqOperator.push("qiqi_queue",data);
     }
 }

@@ -6,7 +6,12 @@ thread:
       corePoolSize:  2
       maximumPoolSize: 5
       keepAliveTime:  10
-
+# 最重要的一个线程池，可以根据业务去调整线程池大小,这里的alive time单位是s
+    chief:
+      queueSize: 2000
+      corePoolSize:  4
+      maximumPoolSize: 20
+      keepAliveTime: 60
 # netty 线程设置
   bootstrap:
     worker: 20
@@ -19,9 +24,4 @@ thread:
       maximumPoolSize: 5
       keepAliveTime:  0
 
-# 最重要的一个线程池，可以根据业务去调整线程池大小,这里的alive time单位是s
-    chief:
-      queueSize: 2000
-      corePoolSize:  4
-      maximumPoolSize: 20
-      keepAliveTime:  60
+

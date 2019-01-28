@@ -1,12 +1,12 @@
 spring:
   rabbitmq:
-    host: 114.141.173.17
-    port: 8920
-    username: rabbitmq
-    password: 123456
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
     template:
-      exchange: balance-route-dev
-      routing-key: balance_dev_measure_raw_queue
+      exchange: spring_boot_netty_test_exchange
+      routing-key: mq_test_key
       retry:
         enabled: true
         max-attempts: 5
